@@ -10,22 +10,22 @@ function App() {
   const [filterDate, setFilterDate] = useState("");
 
   const fetchJobs = async () => {
-    const res = await axios.get("http://localhost:5000/api/jobs");
+    const res = await axios.get("https://studentjobtracker-backend.onrender.com/api/jobs");
     setJobs(res.data);
   };
 
   const addJob = async (job) => {
-    const res = await axios.post("http://localhost:5000/api/jobs", job);
+    const res = await axios.post("https://studentjobtracker-backend.onrender.com/api/jobs", job);
     setJobs([...jobs, res.data]);
   };
 
   const deleteJob = async (id) => {
-    await axios.delete(`http://localhost:5000/api/jobs/${id}`);
+    await axios.delete(`https://studentjobtracker-backend.onrender.com/api/jobs/${id}`);
     setJobs(jobs.filter((j) => j._id !== id));
   };
 
   const updateStatus = async (id, status) => {
-    const res = await axios.put(`http://localhost:5000/api/jobs/${id}`, { status });
+    const res = await axios.put(`https://studentjobtracker-backend.onrender.com/api/jobs/${id}`, { status });
     setJobs(jobs.map((j) => (j._id === id ? res.data : j)));
   };
 
